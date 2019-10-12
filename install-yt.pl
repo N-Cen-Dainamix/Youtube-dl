@@ -16,12 +16,6 @@
 use strict;
 
 &_banner;
-
-print "-- Updateing the Packages --\n";
-sleep 2;
-system("pkg up");
-print "-- Packages are Updated Successfully --\n";
-sleep 2;
 print "-- install Python --\n";
 sleep 2;
 system("pkg install python -y");
