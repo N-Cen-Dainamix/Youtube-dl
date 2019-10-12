@@ -20,7 +20,7 @@ use strict;
 print "-- Updateing the Packages --\n";
 sleep 2;
 system("pkg up");
-print "-- Packages are Updated Successfully --\n"
+print "-- Packages are Updated Successfully --\n";
 sleep 2;
 print "-- install Python --\n";
 sleep 2;
@@ -33,7 +33,7 @@ sleep 2;
 system("curl -s -L https://yt-dl.org/downloads/latest/youtube-dl -o /data/data/com.termux/files/usr/bin/youtube-dl");
 print "-- Youtube-dl Downloaded Successfully --\n";
 sleep 2;
-print "-- Set Permission to Execute the Script --"
+print "-- Set Permission to Execute the Script --";
 sleep 2;
 system("chmod a+rx /data/data/com.termux/files/usr/bin/youtube-dl");
 print "-- Setup Storage SDcard -- \n";
@@ -45,7 +45,7 @@ system("mkdir storage/dcim/DM-Termux");
 print "-- Setup Startup --\n";
 sleep 2;
 &_setup;
-print "-- Installation completed successfully --\n"
+print "-- Installation completed successfully --\n";
 print "-- Reboot Termux --\n";
 
 sub _setup{
