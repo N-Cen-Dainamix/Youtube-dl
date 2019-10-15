@@ -55,10 +55,7 @@ echo "\\n"
 echo "+++ Setup Directory +++"
 echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
 sleep 2;
-cd ..
-mkdir -p storage/dcim/DM-Termux
-cd Youtube-dl
-cp yt-downloader.pl storage/dcim/DM-Termux/yt-downloader.pl
+mkdir -p storage/dcim/DM-Termux && cp yt-downloader.pl $_
 echo "\\n"
 echo "+++ Setup Startup +++"
 sleep 2;
