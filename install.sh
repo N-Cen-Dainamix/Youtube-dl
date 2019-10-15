@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 # Info:
 #  author:    N-Cen-Dainamix
-#  file:      install.sh
+#  file:      install-yt.sh
 #  created:   16/10/2019
 #  version:   1.3.0
 # -----------------------------------------------------------------------------
@@ -56,12 +56,12 @@ echo "+++ Setup Directory +++"
 echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
 sleep 2;
 cd ..
-mkdir storage/dcim/DM-Termux
+mkdir -p storage/dcim/DM-Termux
+cd Youtube-dl
+cp yt-downloader.pl storage/dcim/DM-Termux/yt-downloader.pl
 echo "\\n"
 echo "+++ Setup Startup +++"
 sleep 2;
-cd Youtube-dl
-cp yt-downloader.pl storage/dcim/DM-Termux
 cd ..
 echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
 echo clear >> ../usr/etc/bash.bashrc
