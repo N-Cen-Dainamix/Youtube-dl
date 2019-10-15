@@ -13,27 +13,31 @@
 #  Youtube Automatic Converter Downloader for Termux
 # -----------------------------------------------------------------------------
 
-echo  "\\n"
-echo  "+++ Install Python +++"
-echo  "\\n"
+echo "+++ Welcome to Youtube Automatic Converter Downloader ++"
+echo "+++ Script Automatic Install +++"
+echo "+++ Install Python +++"
+echo "\\n"
+cd ..
 sleep 2;
 pkg install python -y
-echo  "\\n"
-echo  "+++ Install Perl (For Youtube Automatic Converter Downloader ) +++"
-echo  "\\n"
+echo "\\n"
+echo "+++ Install Perl (For Youtube Automatic Converter Downloader ) +++"
+echo "\\n"
 sleep 2;
 pkg install perl -y
-echo  "\\n"
-echo  "+++ Install ffmpeg (For Audio Conversion) +++"
-echo  "\\n"
+echo "\\n"
+echo "+++ Install ffmpeg (For Audio Conversion) +++"
+echo "\\n"
 sleep 2;
 pkg install ffmpeg -y
 echo "\\n"
 echo "+++ Install cURL +++"
+echo "\\n"
+sleep 2;
 pkg install curl -y
-echo  "\\n"
-echo  "+++ Downloading Youtube-dl +++"
-echo  "+++ Please Wait +++"
+echo "\\n"
+echo "+++ Downloading Youtube-dl +++"
+echo "+++ Please Wait +++"
 sleep 3;
 curl -s -L https://yt-dl.org/downloads/latest/youtube-dl -o /data/data/com.termux/files/usr/bin/youtube-dl
 echo "+++ Youtube-dl Downloaded Successfully +++"
@@ -50,11 +54,13 @@ termux-setup-storage
 sleep 8;
 echo "\\n"
 echo "+++ Setup Directory +++"
-echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
+echo "+++ Creates a Download Directory in: storage/dcim/DM-Termux";
+echo "\\n"
 sleep 2;
-mkdir $HOME/storage/dcim/DM-Termux
+mkdir storage/dcim/DM-Termux
 echo "\\n"
 echo "+++ Setup Startup +++"
+echo "\\n"
 sleep 2;
 echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
 echo clear >> ../usr/etc/bash.bashrc
