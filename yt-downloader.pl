@@ -1,5 +1,18 @@
 #!/usr/bin/perl
 
+# -----------------------------------------------------------------------------
+# Info:
+#  author:    N-Cen-Dainamix
+#  file:      yt-downloader.pl
+#  created:   16/10/2019
+#  version:   1.3.0 [for Termux Android]
+# -----------------------------------------------------------------------------
+# Requirements:
+#  Perl, Python, cURL, ffmpeg, youtube-dl
+# Description:
+#  Youtube Automatic Converter Downloader for Termux
+# -----------------------------------------------------------------------------
+
 use strict;
 my($menu);
 &_menu;
@@ -33,6 +46,9 @@ if($menu eq '5'){
 }
 if($menu eq '6'){
 &_mp3_only;
+}
+if($menu eq '0'){
+exit;
 }
 
 sub _mp3_sound{
@@ -142,6 +158,7 @@ print q{-- Sample help
 [4] Download and converter sound
 [5] Download all on playlist and sound converter
 [6] Download only what we need and converter sound
+[0] Exit go to Termux
 };
 print "\n-- Enter number: ";
 chop($menu = <stdin>);
