@@ -8,54 +8,58 @@
 #  version:   1.3.0
 # -----------------------------------------------------------------------------
 # Requirements:
-#  Perl, Python, ffmpeg, youtube-dl
+#  Perl, Python, cURL, ffmpeg, youtube-dl
 # Description:
 #  Youtube Automatic Converter Downloader for Termux
 # -----------------------------------------------------------------------------
 
-echo -e "\\n"
-echo -e "+++ Install Python +++"
-echo -e "\\n"
+echo  "\\n"
+echo  "+++ Install Python +++"
+echo  "\\n"
+sleep 2;
 pkg install python -y
+echo  "\\n"
+echo  "+++ Install Perl (For Youtube Automatic Converter Downloader ) +++"
+echo  "\\n"
 sleep 2;
-echo -e "\\n"
-echo -e "+++ Install Perl (For Youtube Automatic Converter Downloader ) +++"
-echo -e "\\n"
 pkg install perl -y
+echo  "\\n"
+echo  "+++ Install ffmpeg (For Audio Conversion) +++"
+echo  "\\n"
 sleep 2;
-echo -e "\\n"
-echo -e "+++ Install ffmpeg (For Audio Conversion) +++"
-echo -e "\\n"
 pkg install ffmpeg -y
-sleep 2;
-echo -e "\\n"
-echo -e "+++ Downloading Youtube-dl +++"
-echo -e "+++ Please Wait +++"
+echo "\\n"
+echo "+++ Install cURL +++"
+pkg install curl -y
+echo  "\\n"
+echo  "+++ Downloading Youtube-dl +++"
+echo  "+++ Please Wait +++"
+sleep 3;
 curl -s -L https://yt-dl.org/downloads/latest/youtube-dl -o /data/data/com.termux/files/usr/bin/youtube-dl
+echo "+++ Youtube-dl Downloaded Successfully +++"
+echo "\\n"
 sleep 2;
-echo -e "+++ Youtube-dl Downloaded Successfully +++"
-echo -e "\\n"
+echo "+++ Set Permission to Execute the Script +++"
 sleep 2;
-echo -e "+++ Set Permission to Execute the Script +++"
 chmod a+rx /data/data/com.termux/files/usr/bin/youtube-dl
 echo "+++ Permission Granted +++"
+echo "\\n"
+echo "+++ Setup SDcard +++"
 sleep 2;
-echo -e "\\n"
-echo -e "+++ Setup SDcard +++"
 termux-setup-storage
 sleep 8;
-echo -e "\\n"
-echo -e "+++ Setup Directory +++"
-echo -e "+++ Download Directory on: storage/dcim/DM-Termux";
+echo "\\n"
+echo "+++ Setup Directory +++"
+echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
 sleep 2;
 mkdir $HOME/storage/dcim/DM-Termux
-echo -e "\\n"
-echo -e "+++ Setup Startup +++"
+echo "\\n"
+echo "+++ Setup Startup +++"
 sleep 2;
-echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashr
-echo clear >> ../usr/etc/bash.bashr
-echo perl yt-downloader.pl >> ../usr/etc/bash.bashr
-echo -e "\\n"
+echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
+echo clear >> ../usr/etc/bash.bashrc
+echo perl yt-downloader.pl >> ../usr/etc/bash.bashrc
+echo "\\n"
 echo "+++ Installation completed successfully +++"
 echo "+++ Reboot Termux +++";
 sleep 5;
