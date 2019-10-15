@@ -13,6 +13,7 @@
 #  Youtube Automatic Converter Downloader for Termux
 # -----------------------------------------------------------------------------
 
+clear
 echo "+++ Youtube Automatic Converter Downloader ++"
 echo "+++ Script Automatic Install +++"
 echo "+++ Install Python +++"
@@ -60,7 +61,7 @@ echo "\\n"
 echo "+++ Setup Startup +++"
 sleep 2;
 cd Youtube-dl
-move yt-downloader.pl storage/dcim/DM-Termux/yt-downloader.pl
+cp yt-downloader.pl storage/dcim/DM-Termux
 cd ..
 echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
 echo clear >> ../usr/etc/bash.bashrc
