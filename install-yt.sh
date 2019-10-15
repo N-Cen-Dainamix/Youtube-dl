@@ -13,6 +13,7 @@
 #  Youtube Automatic Converter Downloader for Termux
 # -----------------------------------------------------------------------------
 
+clear
 echo "+++ Youtube Automatic Converter Downloader ++"
 echo "+++ Script Automatic Install +++"
 echo "+++ Install Python +++"
