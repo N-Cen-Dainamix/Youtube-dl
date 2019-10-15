@@ -15,7 +15,6 @@
 clear
 echo "+++ Youtube Automatic Converter Downloader ++"
 echo "+++ Script Automatic Install +++"
-pause
 echo "+++ Install Python +++"
 echo "\\n"
 sleep 2;
