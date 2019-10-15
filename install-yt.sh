@@ -13,11 +13,10 @@
 #  Youtube Automatic Converter Downloader for Termux
 # -----------------------------------------------------------------------------
 
-echo "+++ Welcome to Youtube Automatic Converter Downloader ++"
+echo "+++ Youtube Automatic Converter Downloader ++"
 echo "+++ Script Automatic Install +++"
 echo "+++ Install Python +++"
 echo "\\n"
-cd ..
 sleep 2;
 pkg install python -y
 echo "\\n"
@@ -37,7 +36,6 @@ sleep 2;
 pkg install curl -y
 echo "\\n"
 echo "+++ Downloading Youtube-dl +++"
-echo "+++ Please Wait +++"
 sleep 3;
 curl -s -L https://yt-dl.org/downloads/latest/youtube-dl -o /data/data/com.termux/files/usr/bin/youtube-dl
 echo "+++ Youtube-dl Downloaded Successfully +++"
@@ -54,13 +52,13 @@ termux-setup-storage
 sleep 8;
 echo "\\n"
 echo "+++ Setup Directory +++"
-echo "+++ Creates a Download Directory in: storage/dcim/DM-Termux";
-echo "\\n"
+echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
 sleep 2;
+move yt-downloader.pl storage/dcim/DM-Termux/yt-downloader.pl
+cd ..
 mkdir storage/dcim/DM-Termux
 echo "\\n"
 echo "+++ Setup Startup +++"
-echo "\\n"
 sleep 2;
 echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
 echo clear >> ../usr/etc/bash.bashrc
