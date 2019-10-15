@@ -25,7 +25,6 @@ echo "+++ Setup Directory +++"
 echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
 sleep 2;
 mkdir storage/dcim/DM-Termux
-cp /data/data/com.termux/files/home/Youtube-dl/yt-downloader.pl /data/data/com.termux/files/home/storage/dcim/DM-Termux
 echo "+++ Install Python +++"
 echo "\\n"
 sleep 2;
@@ -58,6 +57,7 @@ chmod a+rx /data/data/com.termux/files/usr/bin/youtube-dl
 echo "+++ Permission Granted +++"
 echo "\\n"
 echo "+++ Setup Startup +++"
+cp /data/data/com.termux/files/home/Youtube-dl/yt-downloader.pl /data/data/com.termux/files/home/storage/dcim/DM-Termux
 sleep 2;
 echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
 echo clear >> ../usr/etc/bash.bashrc
