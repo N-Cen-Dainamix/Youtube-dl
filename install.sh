@@ -24,11 +24,8 @@ sleep 8;
 echo "+++ Setup Directory +++"
 echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
 sleep 2;
-cd ..
 mkdir storage/dcim/DM-Termux
-cd Youtube-dl
-cp -rf yt-downloader.pl storage/dcmi/DM-Termux/yt-downloader.pl
-cd ..
+cp /data/data/com.termux/files/home/Youtube-dl/yt-downloader.pl /data/data/com.termux/files/home/storage/dcim/DM-Termux
 echo "+++ Install Python +++"
 echo "\\n"
 sleep 2;
