@@ -56,7 +56,6 @@ if($menu eq '+'){
 
 sub _make_link{
 my($f_link,$outfile,$make);
-print "-- Create text link --\n";
 print "-- Finish enter link enter code: ok --\n";
 print "-- File name: "; 
 chop($f_link = <stdin>);
