@@ -74,7 +74,7 @@ last;
      } # end code make link
 
 sub _mp3_sound{
-print "-- Endter link video: ";
+print "-- Enter link video: ";
 chop(my $link = <stdin>);
 system("youtube-dl -x --audio-format mp3 $link");
 print "[successfully] finish work you want download more? [y/n]: ";
