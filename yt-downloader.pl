@@ -14,9 +14,9 @@
 # -----------------------------------------------------------------------------
 
 use strict;
-
 my($menu);
 &_menu;
+
 if($menu eq '?'){
 system('clear');
 &_help;
@@ -55,12 +55,12 @@ if($menu eq '+'){
 }
 
 sub _make_link{
-my($outfile,$file,$make);
+my($file,$make);
 print "-- Create text link --\n";
 print "-- Finish enter link enter code: ok --\n";
 print "-- File name: "; 
 chop($file = <stdin>);
-open $outfile, ">", $file;
+open my $outfile, ">", $file;
 close($outfile);
 while(<>){
 chomp($_);
@@ -174,7 +174,7 @@ sub _menu{
 print q{
 -- Sample help & create text link
 [?] Show all sample help
-[+] Create text link file for download what we need
+[+] Create a link file for download only what we need
 [0] Exit go to termux
 -- Menu item for video [mp4]
 [1] Download video 
