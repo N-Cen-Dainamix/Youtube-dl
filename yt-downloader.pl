@@ -48,6 +48,7 @@ if($menu eq '6'){
 &_mp3_only;
 }
 if($menu eq '0'){
+system('cd $HOME');
 exit;
 }
 if($menu eq '+'){
