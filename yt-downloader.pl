@@ -14,9 +14,9 @@
 # -----------------------------------------------------------------------------
 
 use strict;
+
 my($menu);
 &_menu;
-
 if($menu eq '?'){
 system('clear');
 &_help;
@@ -50,6 +50,30 @@ if($menu eq '6'){
 if($menu eq '0'){
 exit;
 }
+if($menu eq '+'){
+&_make_link;
+}
+
+sub _make_link{
+my($file,$make);
+print "-- Create text link --\n";
+print "-- Finish enter link enter code: ok --\n";
+print "-- File name: "; 
+chop($file = <stdin>);
+open my $outfile, ">", $file;
+close($outfile);
+while(<>){
+chomp($_);
+end()  if m/^ok()/gi;   
+open $make, ">>", $file; 
+print $make "$_\n";
+} # end code make link
+sub end{
+close($make); 
+print "\n-- Create finish link on file: $file\n";
+exit;
+}
+             } # end code make link
 
 sub _mp3_sound{
 print "-- Endter link video: ";
@@ -73,7 +97,7 @@ chop(my $f = <stdin>);
 print "-- Enter number final video: ";
 chop(my $e = <stdin>);
 system("youtube-dl -x --audio-format mp3 --playlist-start $f --playlist-end $e $link");
-} 
+}  # end code mp3_all
 
 sub _mp3_only{
 my(@senhas,$b,$senha2,$senhas);
@@ -90,7 +114,7 @@ print "[info] download: $senha2\n";
 sleep 2;
 system("youtube-dl -x --audio-format mp3 $senha2");
 }
- }
+              }  # end code mp3_only
 
 sub _mp4_video{
 print "-- Enter link video: ";
@@ -114,7 +138,7 @@ chop(my $f = <stdin>);
 print "-- Enter number final video: ";
 chop(my $e = <stdin>);
 system("youtube-dl -i -f mp4 --playlist-start $f --playlist-end $e $link");
-}
+} # end code mp4_all
 
 sub _mp4_only{
 my(@senhas,$b,$senha2,$senhas);
@@ -134,8 +158,7 @@ system("youtube-dl -i -f mp4 $senha2");
     } # end code mp4_only
 
 sub _banner{
-print q{
-+-------------------------------------------+
+print q{+-------------------------------------------+
 | Youtube Automatic Converter Downloader    |
 | Version: 1.3.0 [for Termux Android]       |
 | Update: 16/10/2019                        |
@@ -148,8 +171,11 @@ print q{
 
 sub _menu{
 &_banner;
-print q{-- Sample help
+print q{
+-- Sample help & create text link
 [?] Show all sample help
+[+] Create text link file for download what we need
+[0] Exit go to termux
 -- Menu item for video [mp4]
 [1] Download video 
 [2] Download all on playlist
@@ -158,7 +184,6 @@ print q{-- Sample help
 [4] Download and converter sound
 [5] Download all on playlist and sound converter
 [6] Download only what we need and converter sound
-[0] Exit go to Termux
 };
 print "\n-- Enter number: ";
 chop($menu = <stdin>);
@@ -172,7 +197,8 @@ enter link playlist and number video start and video end you want
 sample want first video number one final video four enter 1 and 4
 
 - How to download video only what we need
-create a new text file and enter link video only what we need
+create a new text file use menu + for easy to create link file
+and enter link video only what we need
 sample create file name link.txt enter three link on file
 https://www.youtube.com/watch?v=AT2M_8E2yK0
 https://www.youtube.com/watch?v=-L3qKTPLLPc
