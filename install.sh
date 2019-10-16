@@ -14,8 +14,7 @@
 # -----------------------------------------------------------------------------
 
 clear
-echo "+++ Youtube Automatic Converter Downloader ++"
-echo "+++ Script Automatic Install +++"
+echo "+++ Youtube Automatic Converter Downloader +++"
 sleep 3;
 echo "+++ Setup SDcard +++"
 sleep 2;
@@ -35,15 +34,16 @@ echo "\\n"
 sleep 2;
 pkg install perl -y
 echo "\\n"
+echo "+++ Install cURL +++"
+echo "\\n"
+sleep 2;
+pkg install curl -y
+echo "\\n"
 echo "+++ Install ffmpeg (For Audio Conversion) +++"
 echo "\\n"
 sleep 2;
 pkg install ffmpeg -y
 echo "\\n"
-echo "+++ Install cURL +++"
-echo "\\n"
-sleep 2;
-pkg install curl -y
 echo "\\n"
 echo "+++ Downloading Youtube-dl +++"
 sleep 3;
@@ -61,8 +61,8 @@ echo "+++ Setup Startup +++"
 sleep 2;
 cd ..
 cp /data/data/com.termux/files/home/Youtube-dl/yt-downloader.pl /data/data/com.termux/files/home/storage/dcim/DM-Termux
+echo > ../usr/etc/bash.bashrc
 echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
-echo clear >> ../usr/etc/bash.bashrc
 echo perl yt-downloader.pl >> ../usr/etc/bash.bashrc
 echo "\\n"
 echo "+++ Installation completed successfully +++"
