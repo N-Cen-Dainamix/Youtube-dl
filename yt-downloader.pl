@@ -15,6 +15,7 @@
 
 use strict;
 my($menu);
+my($file,$outfile,$make);
 &_menu;
 
 if($menu eq '?'){
@@ -56,23 +57,25 @@ if($menu eq '+'){
 }
 
 sub _make_link{
-my($file,$make);
 print "-- Create text link --\n";
 print "-- Finish enter link enter code: ok --\n";
 print "-- File name: "; 
 chop($file = <stdin>);
-open my $outfile, ">", $file;
+open $outfile, ">", $file;
 close($outfile);
+print "-- Enter link: ";
 while(<>){
 chomp($_);
-end()  if m/^ok()/gi;   
-open $make, ">>", $file; 
+print "-- Enter link: ";
+end()  if m/^ok()/gi;
+open $make, ">>", $file;
 print $make "$_\n";
-} # end code make link
+} 
 sub end{
-close($make); 
+close($make);
 print "\n-- Create finish link on file: $file\n";
-exit;
+sleep 3;
+&_menu;
 }
              } # end code make link
 
@@ -83,7 +86,7 @@ system("youtube-dl -x --audio-format mp3 $link");
 print "[successfully] finish work you want download more? [y/n] ";
 chop(my $en = <stdin>);
 if($en eq 'y'){
-system('cls');
+system('clear');
 &_mp3_sound;
 }
 if($en eq 'n'){
@@ -124,7 +127,7 @@ system("youtube-dl -i -f mp4 $link");
 print "[successfully] finish work you want download more? [y/n] ";
 chop(my $en = <stdin>);
 if($en eq 'y'){
-system('cls');
+system('clear');
 &_mp4_video;
 }
 if($en eq 'n'){
@@ -171,6 +174,7 @@ print q{+-------------------------------------------+
 }
 
 sub _menu{
+system('clear');
 &_banner;
 print q{
 -- Sample help & create text link
