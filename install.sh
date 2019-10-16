@@ -1,9 +1,9 @@
-#!/usr/bin/perl
+#!/bin/bash
 
 # -----------------------------------------------------------------------------
 # Info:
 #  author:    N-Cen-Dainamix
-#  file:      yt-downloader.pl
+#  file:      install.sh
 #  created:   16/10/2019
 #  version:   1.3.0 [for Termux Android]
 # -----------------------------------------------------------------------------
@@ -13,198 +13,44 @@
 #  Youtube Automatic Converter Downloader for Termux
 # -----------------------------------------------------------------------------
 
-use strict;
-my($menu);
-&_menu;
-if($menu eq '?'){
-system('clear');
-&_help;
-print "\n-- You want back to downloader? [y/n]: ";
-chop($menu = <stdin>);
-if($menu eq 'y'){
-&_menu;
-}
-if($menu eq 'n'){
-exit;
-}
-            }
-if($menu eq '1'){
-&_mp4_video;
-}
-if($menu eq '2'){
-&_mp4_all;
-}
-if($menu eq '3'){
-&_mp4_only;
-}
-if($menu eq '4'){
-&_mp3_sound;
-}
-if($menu eq '5'){
-&_mp3_all;
-}
-if($menu eq '6'){
-&_mp3_only;
-}
-if($menu eq '0'){
-exit;
-}
-if($menu eq '+'){
-&_make_link;
-}
-
-sub _make_link{
-my($f_link,$outfile,$make);
-print "-- Finish enter link enter code: ok --\n";
-print "-- File name: "; 
-chop($f_link = <stdin>);
-open $outfile, ">", $f_link;
-close($outfile);
-print "-- Enter link: ";
-while(<>){
-chomp($_);
-end()  if m/^ok()/gi;
-open $make, ">>", $f_link;
-print $make "$_\n";
-print "-- Enter link: ";
-}
-sub end{
-close($make);
-print "-- Create finish link on file: $f_link\n";
+clear
+echo "+++ Youtube Automatic Converter Downloader +++"
+sleep 3;
+echo "+++ Setup SDcard +++"
 sleep 2;
-system('perl yt-downloader.pl');
-}
-    } # end code make link
-
-sub _mp3_sound{
-print "-- Endter link video: ";
-chop(my $link = <stdin>);
-system("youtube-dl -x --audio-format mp3 $link");
-print "[successfully] finish work you want download more? [y/n]: ";
-chop(my $en = <stdin>);
-if($en eq 'y'){
-system('clear');
-&_mp3_sound;
-}
-if($en eq 'n'){
-exit;
-}
-             } #end code mp3_sound
-sub _mp3_all{
-print "-- Enter link playlist: ";
-chop(my $link = <stdin>);
-print "-- Enter number first video: ";
-chop(my $f = <stdin>);
-print "-- Enter number final video: ";
-chop(my $e = <stdin>);
-system("youtube-dl -x --audio-format mp3 --playlist-start $f --playlist-end $e $link");
-}  # end code mp3_all
-
-sub _mp3_only{
-my(@senhas,$b,$senha2,$senhas);
-print "-- Enter link file name: ";
-chop(my $file = <stdin>);
-open(a,"<$file");
-@senhas = <a>;
-$b = scalar(@senhas);
-print "[info] read file: $file have $b link\n";
-print "[list] @senhas\n";
-for($a>0;$a<$b;$a++){
-chomp($senha2 = $senhas[$a]);
-print "[info] download: $senha2\n";
+termux-setup-storage
+sleep 8;
+echo "+++ Setup Directory +++"
+echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
 sleep 2;
-system("youtube-dl -x --audio-format mp3 $senha2");
-}
-              }  # end code mp3_only
-
-sub _mp4_video{
-print "-- Enter link video: ";
-chop(my $link = <stdin>);
-system("youtube-dl -i -f mp4 $link");
-print "[successfully] finish work you want download more? [y/n]: ";
-chop(my $en = <stdin>);
-if($en eq 'y'){
-system('clear');
-&_mp4_video;
-}
-if($en eq 'n'){
-exit;
-}
-              } # end code mp4_video
-sub _mp4_all{
-print "-- Enter link playlist: ";
-chop(my $link = <stdin>);
-print "-- Enter number first video: ";
-chop(my $f = <stdin>);
-print "-- Enter number final video: ";
-chop(my $e = <stdin>);
-system("youtube-dl -i -f mp4 --playlist-start $f --playlist-end $e $link");
-} # end code mp4_all
-
-sub _mp4_only{
-my(@senhas,$b,$senha2,$senhas);
-print "-- Enter link file name: ";
-chop(my $file = <stdin>);
-open(a,"<$file");
-@senhas = <a>;
-$b = scalar(@senhas);
-print "[info] read file: $file have $b link\n";
-print "[list] @senhas\n";
-for($a>0;$a<$b;$a++){
-chomp($senha2 = $senhas[$a]);
-print "[info] download: $senha2\n";
+mkdir /data/data/com.termux/files/home/storage/dcim/DM-Termux
+echo "+++ Install Python +++"
 sleep 2;
-system("youtube-dl -i -f mp4 $senha2");
-}
-    } # end code mp4_only
-
-sub _banner{
-print q{+-------------------------------------------+
-| Youtube Automatic Converter Downloader    |
-| Version: 1.3.0 [for Termux Android]       |
-| Update: 16/10/2019                        |
-| Credit by: N-Cen-Dainamix                 |
-| Contact: http://facebook.com/ncendainamix |
-+-------------------------------------------+
-(C) 2014 - 2019 by: Dainamix-Team
-};
-}
-
-sub _menu{
-system('clear');
-&_banner;
-print q{
--- Sample help & create text link
-[?] Show all sample help
-[+] Create a link file for download only what we need
-[0] Exit go to termux
--- Menu item for video [mp4]
-[1] Download video 
-[2] Download all on playlist
-[3] Download only what we need
--- Menu item for music [mp3]
-[4] Download and converter sound
-[5] Download all on playlist and sound converter
-[6] Download only what we need and converter sound
-};
-print "\n-- Enter number: ";
-chop($menu = <stdin>);
-}
-
-sub _help{
-&_banner;
-print q{
-- How to download all on playlist
-enter link playlist and number video start and video end you want
-sample want first video number one final video four enter 1 and 4
-
-- How to download video only what we need
-create a new text file use menu + for easy to create link file
-and enter link video only what we need
-sample create file name link.txt enter three link on file
-https://www.youtube.com/watch?v=AT2M_8E2yK0
-https://www.youtube.com/watch?v=-L3qKTPLLPc
-https://www.youtube.com/watch?v=7qw3NynVgMY
-and enter the name list file link.txt
-};
-}
+pkg install python -y
+echo "+++ Install Perl (For Youtube Automatic Converter Downloader ) +++"
+sleep 2;
+pkg install perl -y
+echo "+++ Install cURL +++"
+sleep 2;
+pkg install curl -y
+echo "+++ Install ffmpeg (For Audio Conversion) +++"
+sleep 2;
+pkg install ffmpeg -y
+echo "+++ Downloading Youtube-dl +++"
+curl -s -L https://yt-dl.org/downloads/latest/youtube-dl -o /data/data/com.termux/files/usr/bin/youtube-dl
+echo "+++ Youtube-dl Downloaded Successfully +++"
+sleep 2;
+echo "+++ Set Permission to Execute the Script +++"
+sleep 2;
+chmod a+rx /data/data/com.termux/files/usr/bin/youtube-dl
+echo "+++ Permission Granted +++"
+sleep 2;
+echo "+++ Setup Startup +++"
+sleep 2;
+cd ..
+cp /data/data/com.termux/files/home/Youtube-dl/yt-downloader.pl /data/data/com.termux/files/home/storage/dcim/DM-Termux
+echo clear >> ../usr/etc/bash.bashrc
+echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
+echo perl yt-downloader.pl >> ../usr/etc/bash.bashrc
+echo "+++ Installation completed successfully +++"
+echo "+++ Reboot Termux +++";
