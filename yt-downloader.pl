@@ -14,8 +14,7 @@
 # -----------------------------------------------------------------------------
 
 use strict;
-my($menu);
-my($file,$outfile,$make);
+my($menu,$f_link,$outfile,$make);
 &_menu;
 
 if($menu eq '?'){
@@ -60,20 +59,20 @@ sub _make_link{
 print "-- Create text link --\n";
 print "-- Finish enter link enter code: ok --\n";
 print "-- File name: "; 
-chop($file = <stdin>);
-open $outfile, ">", $file;
+chop($f_link = <stdin>);
+open $outfile, ">", $f_link;
 close($outfile);
 print "-- Enter link: ";
 while(<>){
 chomp($_);
 print "-- Enter link: ";
 end()  if m/^ok()/gi;
-open $make, ">>", $file;
+open $make, ">>", $f_link;
 print $make "$_\n";
 } 
 sub end{
 close($make);
-print "\n-- Create finish link on file: $file\n";
+print "\n-- Create finish link on file: $f_link\n";
 sleep 3;
 &_menu;
 }
