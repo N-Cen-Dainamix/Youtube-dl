@@ -61,7 +61,7 @@ echo "+++ Setup Startup +++"
 sleep 2;
 cd ..
 cp /data/data/com.termux/files/home/Youtube-dl/yt-downloader.pl /data/data/com.termux/files/home/storage/dcim/DM-Termux
-echo > ../usr/etc/bash.bashrc
+echo clear >> ../usr/etc/bash.bashrc
 echo cd storage/dcim/DM-Termux >> ../usr/etc/bash.bashrc
 echo perl yt-downloader.pl >> ../usr/etc/bash.bashrc
 echo "\\n"
