@@ -15,45 +15,41 @@
 
 use strict;
 my($menu);
+goto Main;
+Main:
+while(1){
 &_menu;
-
+print "\n-- Enter number: ";
+chop($menu = <stdin>);
 if($menu eq '?'){
 system('clear');
 &_help;
-print "\n-- You want back to downloader? [y/n]: ";
-chop($menu = <stdin>);
-if($menu eq 'y'){
-&_menu;
 }
-if($menu eq 'n'){
+elsif($menu eq '+'){
+&_make_link;
+            }
+elsif($menu eq '0'){
 exit;
 }
-            }
-if($menu eq '1'){
+elsif($menu eq '1'){
 &_mp4_video;
 }
-if($menu eq '2'){
+elsif($menu eq '2'){
 &_mp4_all;
 }
-if($menu eq '3'){
+elsif($menu eq '3'){
 &_mp4_only;
 }
-if($menu eq '4'){
+elsif($menu eq '4'){
 &_mp3_sound;
 }
-if($menu eq '5'){
+elsif($menu eq '5'){
 &_mp3_all;
 }
-if($menu eq '6'){
+elsif($menu eq '6'){
 &_mp3_only;
 }
-if($menu eq '0'){
-exit;
-}
-if($menu eq '+'){
-&_make_link;
-}
-
+ }
 sub _make_link{
 my($f_link,$outfile,$make);
 print "-- Finish enter link enter code: ok --\n";
@@ -73,9 +69,9 @@ sub end{
 close($make);
 print "-- Create finish link on file: $f_link\n";
 sleep 2;
-system('perl yt-downloader.pl');
+last;
 }
-    } # end code make link
+     } # end code make link
 
 sub _mp3_sound{
 print "-- Endter link video: ";
@@ -84,8 +80,7 @@ system("youtube-dl -x --audio-format mp3 $link");
 print "[successfully] finish work you want download more? [y/n]: ";
 chop(my $en = <stdin>);
 if($en eq 'y'){
-system('clear');
-&_mp3_sound;
+goto Main;
 }
 if($en eq 'n'){
 exit;
@@ -99,6 +94,15 @@ chop(my $f = <stdin>);
 print "-- Enter number final video: ";
 chop(my $e = <stdin>);
 system("youtube-dl -x --audio-format mp3 --playlist-start $f --playlist-end $e $link");
+print "[successfully] finish work you want download more? [y/n]: ";
+chop(my $en = <stdin>);
+if($en eq 'y'){
+goto Main;
+}
+if($en eq 'n'){
+exit;
+}
+         
 }  # end code mp3_all
 
 sub _mp3_only{
@@ -116,6 +120,14 @@ print "[info] download: $senha2\n";
 sleep 2;
 system("youtube-dl -x --audio-format mp3 $senha2");
 }
+print "[successfully] finish work you want download more? [y/n]: ";
+chop(my $en = <stdin>);
+if($en eq 'y'){
+goto Main;
+}
+if($en eq 'n'){
+exit;
+}         
               }  # end code mp3_only
 
 sub _mp4_video{
@@ -125,8 +137,7 @@ system("youtube-dl -i -f mp4 $link");
 print "[successfully] finish work you want download more? [y/n]: ";
 chop(my $en = <stdin>);
 if($en eq 'y'){
-system('clear');
-&_mp4_video;
+goto Main;
 }
 if($en eq 'n'){
 exit;
@@ -140,6 +151,14 @@ chop(my $f = <stdin>);
 print "-- Enter number final video: ";
 chop(my $e = <stdin>);
 system("youtube-dl -i -f mp4 --playlist-start $f --playlist-end $e $link");
+print "[successfully] finish work you want download more? [y/n]: ";
+chop(my $en = <stdin>);
+if($en eq 'y'){
+goto Main;
+}
+if($en eq 'n'){
+exit;
+}
 } # end code mp4_all
 
 sub _mp4_only{
@@ -156,6 +175,14 @@ chomp($senha2 = $senhas[$a]);
 print "[info] download: $senha2\n";
 sleep 2;
 system("youtube-dl -i -f mp4 $senha2");
+}
+print "[successfully] finish work you want download more? [y/n]: ";
+chop(my $en = <stdin>);
+if($en eq 'y'){
+goto Main;
+}
+if($en eq 'n'){
+exit;
 }
     } # end code mp4_only
 
@@ -188,8 +215,6 @@ print q{
 [5] Download all on playlist and sound converter
 [6] Download only what we need and converter sound
 };
-print "\n-- Enter number: ";
-chop($menu = <stdin>);
 }
 
 sub _help{
