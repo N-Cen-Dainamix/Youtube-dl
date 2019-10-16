@@ -21,7 +21,7 @@ sleep 2;
 termux-setup-storage
 sleep 8;
 echo "+++ Setup Directory +++"
-echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux";
+echo "+++ Creates a Download Directory on: storage/dcim/DM-Termux +++";
 sleep 2;
 mkdir /data/data/com.termux/files/home/storage/dcim/DM-Termux
 echo "+++ Install Python +++"
