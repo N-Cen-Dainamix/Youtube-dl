@@ -14,13 +14,13 @@
 # -----------------------------------------------------------------------------
 
 use strict;
-my($menu,$f_link,$outfile,$make);
+my($menu);
 &_menu;
 
 if($menu eq '?'){
 system('clear');
 &_help;
-print "\n-- You want back to downloader ? [y/n]: ";
+print "\n-- You want back to downloader? [y/n]: ";
 chop($menu = <stdin>);
 if($menu eq 'y'){
 &_menu;
@@ -48,7 +48,6 @@ if($menu eq '6'){
 &_mp3_only;
 }
 if($menu eq '0'){
-system('cd $HOME');
 exit;
 }
 if($menu eq '+'){
@@ -56,6 +55,7 @@ if($menu eq '+'){
 }
 
 sub _make_link{
+my($f_link,$outfile,$make);
 print "-- Create text link --\n";
 print "-- Finish enter link enter code: ok --\n";
 print "-- File name: "; 
@@ -65,24 +65,24 @@ close($outfile);
 print "-- Enter link: ";
 while(<>){
 chomp($_);
-print "-- Enter link: ";
 end()  if m/^ok()/gi;
 open $make, ">>", $f_link;
 print $make "$_\n";
-} 
+print "-- Enter link: ";
+}
 sub end{
 close($make);
-print "\n-- Create finish link on file: $f_link\n";
-sleep 3;
-&_menu;
+print "-- Create finish link on file: $f_link\n";
+sleep 2;
+system('perl yt-downloader.pl');
 }
-             } # end code make link
+    } # end code make link
 
 sub _mp3_sound{
 print "-- Endter link video: ";
 chop(my $link = <stdin>);
 system("youtube-dl -x --audio-format mp3 $link");
-print "[successfully] finish work you want download more? [y/n] ";
+print "[successfully] finish work you want download more? [y/n]: ";
 chop(my $en = <stdin>);
 if($en eq 'y'){
 system('clear');
@@ -123,7 +123,7 @@ sub _mp4_video{
 print "-- Enter link video: ";
 chop(my $link = <stdin>);
 system("youtube-dl -i -f mp4 $link");
-print "[successfully] finish work you want download more? [y/n] ";
+print "[successfully] finish work you want download more? [y/n]: ";
 chop(my $en = <stdin>);
 if($en eq 'y'){
 system('clear');
